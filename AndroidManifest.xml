@@ -21,7 +21,6 @@
             android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="shire.bcho.palantiroid.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 

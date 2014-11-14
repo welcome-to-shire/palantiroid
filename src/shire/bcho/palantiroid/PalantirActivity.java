@@ -11,7 +11,7 @@ import android.content.Intent;
  */
 public class PalantirActivity extends Activity
 {
-    private final static String BOOT_INTENT = "shire.bcho.palantiroid.BOOT_COMPLETED";
+    private final static String START = "shire.bcho.palantiroid.START";
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -19,10 +19,8 @@ public class PalantirActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        // Start notification receiver
-        // FIXME receiver should start via `BOOT_COMPLETED`
         Intent intent = new Intent();
-        intent.setAction(BOOT_INTENT);
+        intent.setAction(START);
         sendBroadcast(intent);
     }
 }

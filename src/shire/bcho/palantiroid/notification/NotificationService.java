@@ -16,7 +16,12 @@ import shire.bcho.palantiroid.palantir.PalantirError;
 public class NotificationService extends IntentService {
 
     /**
-     * Check every 5 minutes;
+     * Service instance.
+     */
+    private static NotificationService instance = null;
+
+    /**
+     * Check every 5 minutes.
      *
      * TODO make it configurable.
      */
@@ -55,8 +60,25 @@ public class NotificationService extends IntentService {
     private NotificationManager noti = new NotificationManager();
     private Manager messageManager = new Manager(server, subject);
 
+    public static boolean isServiceCreated() {
+        return instance != null;
+    }
+
     public NotificationService() {
         super("Notification Service");
+    }
+
+    @Override
+    public void onCreate()
+    {
+        // Bind to the class instance.
+        instance = this;
+    }
+
+    public void onDestory()
+    {
+        // Remove the class instance.
+        instance = null;
     }
 
     @Override

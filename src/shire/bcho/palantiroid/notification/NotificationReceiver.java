@@ -2,6 +2,7 @@ package shire.bcho.palantiroid.notification;
 
 import android.util.Log;
 
+import android.widget.Toast;
 import android.content.Intent;
 import android.content.Context;
 import android.content.BroadcastReceiver;
@@ -15,7 +16,10 @@ public class NotificationReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Intent serviceIntent = new Intent(context, NotificationService.class);
-        context.startService(serviceIntent);
+        if (! NotificationService.isServiceCreated()) {
+            Intent serviceIntent = new Intent(context, NotificationService.class);
+            context.startService(serviceIntent);
+        }
+        Toast.makeText(context, "Service started...", Toast.LENGTH_LONG).show();
     }
 }
